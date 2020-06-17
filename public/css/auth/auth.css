@@ -28,7 +28,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: -20px 0 50px;
+    /*margin: -20px 0 50px;*/
+    margin: 0;
     padding: 0;
     background: #000;
     color: #fff;
@@ -282,4 +283,19 @@ button.ghost {
 
 .container.right-panel-active .overlay-right {
     transform: translateX(20%);
+}
+
+.c-auth {
+    position: relative;
+}
+.c-auth::before {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+    box-shadow: 0 0 500px #000 inset,0 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }

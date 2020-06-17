@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateArtGalleriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('art_galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('name_role')->unique();
-            // $table->timestamps();
+
+            $table->unsignedBigInteger('artwork_id');
+            $table->foreign('artwork_id')->references('id')->on('artworks')->onDelete('cascade');
+            $table->string('image');
+
+            $table->timestamps();
         });
     }
 
@@ -27,6 +31,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('art_galleries');
     }
 }

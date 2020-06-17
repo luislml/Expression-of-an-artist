@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+    // artist
+    public function artists()
+    {
+        return $this->hasMany('App\Artist');
+    }
+    // school
+    public function schools()
+    {
+        return $this->hasMany('App\ArtSchool');
+    }
 }

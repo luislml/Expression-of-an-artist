@@ -12,18 +12,10 @@ class Role extends Seeder
     public function run()
     {
         \DB::table('roles')->insert([
-            [
-                'name_role' => 'User'
-            ],
-            [
-                'name_role' => 'Artists'
-            ],
-            [
-                'name_role' => 'Art-School'
-            ],
-            [
-                'name_role' => 'Administrator'
-            ]
+            ['name_role' => 'user'],
+            ['name_role' => 'artist'],
+            ['name_role' => 'art-school'],
+            ['name_role' => 'admin']
         ]);
     }
 }

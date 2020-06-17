@@ -16,7 +16,7 @@
         <link href="{{ asset('css/auth/jquery-ui.css') }}" rel='stylesheet'>
         
     </head>
-    <body>
+    <body class="c-auth">
         <div class="container" id="container">
             @include('autentication.login') 
             @include('autentication.register')
