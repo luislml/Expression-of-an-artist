@@ -17,12 +17,11 @@
         
     </head>
     <body class="c-auth">
+
         <div class="container" id="container">
-            @include('autentication.login') 
-            @include('autentication.register')
-            @include('autentication.overlay')
+            @yield('content')
         </div>
-            @include('autentication.bg')
+            @include('auth.bg')
         
         <!-- Scripts -->
         <script src="{{ asset('js/auth/auth.js') }}" defer></script>

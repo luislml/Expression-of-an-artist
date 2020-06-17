@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 Route::get('/', function () {
-    return view('autentication.auth');
+    return view('homepage');
 });
+/* Route::get('/', function () {
+    return view('autentication.auth');
+}); */
+
+Route::get('/loginregister', function () {
+    return view('auth.auth');
+})->name('loginregister');
 
 Auth::routes();
 

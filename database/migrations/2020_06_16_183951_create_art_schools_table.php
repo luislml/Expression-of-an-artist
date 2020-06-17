@@ -16,8 +16,8 @@ class CreateArtSchoolsTable extends Migration
         Schema::create('art_schools', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name_school', 100)->nullable()->unique();
             $table->string('location', 200)->nullable();
             $table->string('about', 255)->nullable();

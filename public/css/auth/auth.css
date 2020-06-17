@@ -65,16 +65,25 @@ a {
 }
 
 .container {
-  border-radius: 10px;
-  box-shadow: 0 0 500px #000 inset,0 0 300px #000 inset,0 0 200px #000 inset;
-  position: absolute;
-  overflow: hidden;
-  width: 768px;
-  max-width: 100%;
-  min-height: 480px;
-  opacity: 0.8;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 1;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cont-auth {
+    border-radius: 10px;
+    box-shadow: 0 0 500px #000 inset,0 0 300px #000 inset,0 0 200px #000 inset;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.bg-auth {
+    background: rgba(45, 52, 54, 0.8);
+    text-align: center;
+    padding: 50px;
 }
 
 .form-container form {
@@ -123,6 +132,7 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    cursor: pointer;
 }
 
 input[type=text] {
@@ -285,6 +295,7 @@ button.ghost {
     transform: translateX(20%);
 }
 
+/* custom */
 .c-auth {
     position: relative;
 }
