@@ -32,6 +32,6 @@ class CreateArtistCatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artist_cat');
+        Schema::dropIfExists('artist_art_categories');
     }
 }
