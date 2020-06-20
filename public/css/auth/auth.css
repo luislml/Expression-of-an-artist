@@ -64,7 +64,7 @@ a {
     margin: 15px 0;
 }
 
-.container {
+.container-auth {
     position: absolute;
     overflow: hidden;
     z-index: 1;
@@ -113,13 +113,13 @@ a {
 }
 
 
-.form-container input {
+/* .form-container input {
     background: #eee;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
-}
+} */
 
 button {
     border-radius: 20px;
@@ -135,7 +135,7 @@ button {
     cursor: pointer;
 }
 
-input[type=text] {
+/* input[type=text] {
     width: 240px;
     text-align: center;
     background: transparent;
@@ -149,9 +149,9 @@ input[type=text] {
     outline: none;
     color: #fff;
     font-weight: bold;
-}
+} */
 
-input[type=password] {
+/* input[type=password] {
     width: 240px;
     text-align: center;
     background: transparent;
@@ -164,9 +164,9 @@ input[type=password] {
     transition: border 0.5s;
     outline: none;
     color: #fff;
-}
+} */
 
-input[type=email] {
+/* input[type=email] {
     width: 240px;
     text-align: center;
     background: transparent;
@@ -180,7 +180,7 @@ input[type=email] {
     outline: none;
     color: #fff;
     font-weight: bold;
-}
+} */
 
 button:active {
     transform: scale(0.95);
@@ -266,32 +266,32 @@ button.ghost {
 /*....Animation....*/
 
 /*....Move signin to the right....*/
-.container.right-panel-active .sign-in-container {
+.container-auth.right-panel-active .sign-in-container {
     transform: translateX(100%);
 }
 
 /*....Move overlay to the left....*/
-.container.right-panel-active .overlay-container {
+.container-auth.right-panel-active .overlay-container {
     transform: translateX(-100%);
 }
 
 /*....Bring sign up over sign in....*/
-.container.right-panel-active .sign-up-container {
+.container-auth.right-panel-active .sign-up-container {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
 }
 
 /*...Move overlay back to right....*/
-.container.right-panel-active .overlay {
+.container-auth.right-panel-active .overlay {
     transform: translateX(50%);
 }
 
-.container.right-panel-active .overlay-left {
+.container-auth.right-panel-active .overlay-left {
     transform: translateX(0);
 }
 
-.container.right-panel-active .overlay-right {
+.container-auth.right-panel-active .overlay-right {
     transform: translateX(20%);
 }
 
