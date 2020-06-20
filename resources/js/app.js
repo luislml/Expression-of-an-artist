@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+import Masonry from 'masonry-layout';
+
 window.Vue = require('vue');
 
 /**
@@ -30,3 +32,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+
+
+  const msnry = new Masonry( '.grid', {
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 300,
+    gutter: 20
+  });
+
