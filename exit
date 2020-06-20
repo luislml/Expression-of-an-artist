@@ -1,0 +1,53 @@
+[33mcommit a78fa45e8eb05b6159002f704ca1ba311c67525e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: luis <s.r.l.a10539595@gmail.com>
+Date:   Fri Jun 19 21:20:35 2020 -0400
+
+    masonry
+
+[33mcommit 70691d1d3c561ae656386a785fb9fa58420ede7e[m
+Author: 94tomas <nos18de@gmail.com>
+Date:   Wed Jun 17 22:18:09 2020 -0400
+
+    add file sass
+
+[33mcommit e417e820668e2528c79d8462d1d76845c9aaac39[m
+Author: 94tomas <nos18de@gmail.com>
+Date:   Wed Jun 17 19:02:31 2020 -0400
+
+    move files login register
+
+[33mcommit 53154452e8a34b294288962b4a39a9aff8929277[m
+Author: 94tomas <nos18de@gmail.com>
+Date:   Tue Jun 16 21:37:47 2020 -0400
+
+    small fix
+
+[33mcommit 7efdf5f50d9012c5852335171231bdf707d4f645[m
+Author: 94tomas <nos18de@gmail.com>
+Date:   Tue Jun 16 21:17:43 2020 -0400
+
+    add migration
+
+[33mcommit d51c171a95224cb7314b8ffd9b5f4fffabe3d4d7[m
+Author: luis <s.r.l.a10539595@gmail.com>
+Date:   Tue Jun 16 12:54:03 2020 -0400
+
+    auth-style
+
+[33mcommit 04b053449629e170ff079e193a8f0dffeaecdb7c[m
+Author: 94tomas <nos18de@gmail.com>
+Date:   Mon Jun 15 21:36:02 2020 -0400
+
+    add seeder role
+
+[33mcommit fe93894fb449e7d6a20fd643c9de4ef73dc0cf90[m
+Author: luis <s.r.l.a10539595@gmail.com>
+Date:   Mon Jun 15 05:48:10 2020 -0400
+
+    login-and-roles
+
+[33mcommit 6297f9ec0794d89b739389b91f157d4f4c5135ec[m
+Author: luis <s.r.l.a10539595@gmail.com>
+Date:   Sun Jun 14 08:40:17 2020 -0400
+
+    start

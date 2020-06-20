@@ -12,13 +12,14 @@
         <!-- Fonts -->
         
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/auth/auth.css') }}" rel="stylesheet">
         <link href="{{ asset('css/auth/jquery-ui.css') }}" rel='stylesheet'>
         
     </head>
     <body class="c-auth">
 
-        <div class="container" id="container">
+        <div class="container-auth" id="container">
             @yield('content')
         </div>
             @include('auth.bg')
