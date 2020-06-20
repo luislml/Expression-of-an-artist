@@ -28,4 +28,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::apiresource('admin', 'AdminController');
+Route::apiresource('artist', 'ArtistController');
+Route::apiresource('art-school', 'ArtschoolController');
+
 
