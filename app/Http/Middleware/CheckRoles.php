@@ -22,6 +22,6 @@ class CheckRoles
 
             }
         
-        return redirect('home');
+        return redirect('/');
     }
 }
