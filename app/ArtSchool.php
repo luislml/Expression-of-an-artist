@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArtSchool extends Model
 {
+    protected $fillable = [
+        'user_id', 'name_school', 'location', 'about', 'mission', 'vision', 'state'
+    ];
     // user
     public function admin()
     {

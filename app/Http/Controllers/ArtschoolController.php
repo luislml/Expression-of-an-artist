@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ArtSchool;
 
 class ArtschoolController extends Controller
 {
@@ -13,7 +14,7 @@ class ArtschoolController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','role:3']);  
+        $this->middleware(['auth']);  
     }
     public function index()
     {
@@ -28,7 +29,17 @@ class ArtschoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $artschool = new ArtSchool;
+        $artschool->name_school = $request->artschool['name_school'];
+        $artschool->location = $request->artschool['location'];
+        $artschool->about = $request->artschool['about'];
+        $artschool->mission = $request->artschool['mission'];
+        $artschool->vision = $request->artschool['vision'];
+        $artschool->user_id = auth()->user()->id;
+        $artschool->save();
+
+
+        return;
     }
 
     /**

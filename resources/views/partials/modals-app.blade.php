@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form-artist userID="{{ Auth::user()->id }}"></form-artist>
+                <form-artist></form-artist>
             </div>
         </div>    
     </div>
