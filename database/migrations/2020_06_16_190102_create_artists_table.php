@@ -26,6 +26,7 @@ class CreateArtistsTable extends Migration
             $table->string('location', 100)->nullable();
             $table->boolean('profession')->nullable();
             $table->integer('sale_num')->nullable();
+            $table->boolean('state')->default(false);
 
             $table->timestamps();
         });

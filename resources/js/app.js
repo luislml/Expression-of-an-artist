@@ -21,7 +21,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/* Componets */
+Vue.component('form-artist', require('./components/artists/FormArtist.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -36,10 +37,17 @@ const app = new Vue({
 
 
 
-  const msnry = new Masonry( '.grid', {
-    // options
-    itemSelector: '.grid-item',
-    columnWidth: 300,
-    gutter: 20
-  });
+const msnry = new Masonry( '.grid', {
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 300,
+  gutter: 20
+});
 
+
+/* Custom js */
+/* -----------------------------custom------------------------------------- */
+
+
+/* Custom js */
+/* ------------------------------------------------------- */

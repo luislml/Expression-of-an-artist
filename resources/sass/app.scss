@@ -1,11 +1,16 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "node_modules/font-awesome/scss/font-awesome.scss";
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// Animate
+@import "~animate.css/animate.css";
+// Toast
+@import '~toastr/toastr';
 
 @import 'customLuis';
 @import 'customThom';

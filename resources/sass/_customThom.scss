@@ -839,23 +839,6 @@ a {
                             top: 12px;
                         }
                     }
-                    &.on {
-                        /* &::after {
-                            content: "";
-                            width: 1px;
-                            height: 10px;
-                            position: absolute;
-                            right: -1px;
-                            background: #2d353c;
-                            top: 50%;
-                            transform: translateY(-50%);
-                        }
-                        >a {
-                            &::after {
-                                transform: rotate(0deg);
-                            }
-                        } */
-                    }
                     &:hover {
                         ul {
                             display: block !important;

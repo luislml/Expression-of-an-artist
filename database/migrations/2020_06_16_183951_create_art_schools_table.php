@@ -23,6 +23,7 @@ class CreateArtSchoolsTable extends Migration
             $table->string('about', 255)->nullable();
             $table->string('mission', 255)->nullable();
             $table->string('vision', 255)->nullable();
+            $table->boolean('state')->default(false);
 
             $table->timestamps();
         });

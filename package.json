@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "masonry-layout": "^4.2.2"
+        "animate.css": "^4.1.0",
+        "font-awesome": "^4.7.0",
+        "masonry-layout": "^4.2.2",
+        "toastr": "^2.1.4"
     }
 }

@@ -10,12 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -122,33 +118,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <!-- More scripts -->
-    <script>
-        $(document).ready(function() {
-
-            $('#minified').on('click', function() {
-                $('body').toggleClass('sidebar-minified');
-                $('.sidebar-minified .sub-menu').removeClass('on');
-                $('.sidebar-minified .sub-menu>ul').hide('fade');
-            });
-            
-            $('.sub-menu>a').on('click', function() {
-
-                if ($(this).parent().hasClass('on')) {
-                    $(this).parent().children('ul').hide('fade');
-                    $(this).parent().removeClass('on');
-                } else {
-                    $(this).parent().children('ul').show('fade');
-                    $(this).parent().addClass('on');
-                }
-                
-            });
-
-            if (!$('body').hasClass('sidebar-minified')) {
-                
-            }
-        });
-    </script>
     @yield('scripts')
 </body>
 </html>
