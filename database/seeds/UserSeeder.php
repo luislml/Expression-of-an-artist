@@ -29,6 +29,12 @@ class UserSeeder extends Seeder
                 'role_id' => '2',
                 'email' => 'artista@spider.com',
                 'password'  => bcrypt('12345678')  
+            ],
+            [
+                'name' => 'user',
+                'role_id' => '1',
+                'email' => 'user@spider.com',
+                'password'  => bcrypt('12345678')  
             ]
         ]);
     }

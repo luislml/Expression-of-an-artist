@@ -88,6 +88,7 @@
                         </div>
                     </li>
 
+                    @if (auth()->user()->hasRoles(['1']))
                     <li class="nav-item dropdown">
                         <a id="options" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             opcion
@@ -103,6 +104,7 @@
                             </a>
                         </div>
                     </li>
+                    @endif
                 @endguest
             </ul>
         </div>

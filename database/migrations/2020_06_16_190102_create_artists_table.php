@@ -21,7 +21,7 @@ class CreateArtistsTable extends Migration
             $table->unsignedBigInteger('school_id')->nullable();
             $table->foreign('school_id')->references('id')->on('art_schools')->onDelete('cascade');
             $table->string('biography', 500);
-            $table->dateTime('birthday');
+            $table->date('birthday');
             $table->string('tel_cel')->unique();
             $table->string('location', 100)->nullable();
             $table->boolean('profession')->nullable();

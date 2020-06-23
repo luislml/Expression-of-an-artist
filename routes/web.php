@@ -32,4 +32,5 @@ Route::apiresource('admin', 'AdminController');
 Route::apiresource('artist', 'ArtistController');
 Route::apiresource('art-school', 'ArtschoolController');
 
-
+// routes categories
+Route::get('category', 'CategoryController@index');
