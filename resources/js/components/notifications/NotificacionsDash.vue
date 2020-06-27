@@ -12,7 +12,7 @@
                         Notificaciones (<b> 3 </b>)
                     </div>
                     <div class="col-6 text-right">
-                        <a href="#"><i class="fa fa-eye"></i> Ver todo</a>
+                        <a href="/notificatios"><i class="fa fa-eye"></i> Ver todo</a>
                     </div>
                 </div>
             </div>
@@ -59,6 +59,15 @@
 </template>
 <script>
 export default {
-    
+    data() {
+        return {
+            
+        }
+    },
+    mounted() {
+        Echo.channel('admin').listen('NewArtist', (data) => {
+            console.log(data);
+        })
+    },
 }
 </script>

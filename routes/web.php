@@ -34,3 +34,10 @@ Route::apiresource('art-school', 'ArtschoolController');
 
 // routes categories
 Route::get('category', 'CategoryController@index');
+
+// Routes Admin
+Route::group(['middleware' => ['auth', 'role:4']], function () {
+    Route::get('notificatios', function () {
+        return view('admin.notifications');
+    });
+});

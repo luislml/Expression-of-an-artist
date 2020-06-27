@@ -533,10 +533,10 @@ a {
     padding-left: 250px;
     transition: all .2s linear;
     main {
-        padding: 15px;
+        padding: 30px;
         background-color: #424242;
         min-height: 256px;
-        height: calc(100vh - 50px);
+        height: calc(100% - 50px);
     }
 }
 

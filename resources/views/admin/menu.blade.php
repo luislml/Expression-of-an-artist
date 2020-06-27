@@ -1,41 +1,17 @@
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">
+    <a href="{{ url('admin') }}" class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}">
         <i class="fa fa-th-large"></i>
         <span>Dashboard</span>
     </a>
-    <a href="#" class="list-group-item list-group-item-action">
-        <i class="fa fa-server"></i>
-        <span>Dashboard</span>
+    <a href="{{ url('notificatios') }}" class="list-group-item list-group-item-action {{ (request()->is('notificatios')) ? 'active' : '' }}">
+        <i class="fa fa-bell" aria-hidden="true"></i>
+        <span>Notificaciones</span>
     </a>
-
-    <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#submenu_1" role="button" aria-expanded="true" aria-controls="collapseExample">
-        <i class="fa fa-server"></i>
-        <span>Dashboard</span>
-    </a>
-    <div class="list-group collapse show" id="submenu_1">
-        <a href="#" class="list-group-item list-group-item-action">
-            <span>Dashboard</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action active">
-            <span>EdDashboard</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <span>Sub Dashboard</span>
-        </a>
-    </div>
-
-    <a href="#" class="list-group-item list-group-item-action">
-        <i class="fa fa-bell-o"></i>
-        <span>Dashboard</span>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-        <i class="fa fa-bell-o"></i>
-        <span>Dashboard</span>
-    </a>
-
+    
+    {{-- menu collapsed --}}
     <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#submenu_2" role="button" aria-expanded="false" aria-controls="collapseExample">
         <i class="fa fa-server"></i>
-        <span>Dashboard</span>
+        <span>Test</span>
     </a>
     <div class="list-group collapse" id="submenu_2">
         <a href="#" class="list-group-item list-group-item-action">
