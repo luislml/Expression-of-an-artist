@@ -1,48 +1,30 @@
-<ul class="nav-d">
-    <li class="nav-header">Navegacion</li>
-    <li class="has-sub active">
-        <a href="javascript:;">
-            <i class="fa fa-th-large"></i>
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active">
+        <i class="fa fa-th-large"></i>
+        <span>Dashboard</span>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">
+        <i class="fa fa-server"></i>
+        <span>Dashboard</span>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">
+        <i class="fa fa-bell-o"></i>
+        <span>Dashboard</span>
+    </a>
+
+    <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#submenu_2" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <i class="fa fa-server"></i>
+        <span>Dashboard</span>
+    </a>
+    <div class="list-group collapse" id="submenu_2">
+        <a href="#" class="list-group-item list-group-item-action">
             <span>Dashboard</span>
         </a>
-    </li>
-
-    <li class="has-sub sub-menu">
-        <a href="javascript:;">
-            <i class="fa fa-server" aria-hidden="true"></i>
-            <span>escuela</span>
+        <a href="#" class="list-group-item list-group-item-action">
+            <span>EdDashboard</span>
         </a>
-        <ul>
-            <li class="active">
-                <a href="javascript:;">link</a>
-            </li>
-            <li>
-                <a href="javascript:;">link 2</a>
-            </li>
-            <li>
-                <a href="javascript:;">link 2</a>
-            </li>
-        </ul>
-    </li>
-
-    <li class="has-sub sub-menu">
-        <a href="javascript:;">
-            <i class="fa fa-bell-o" aria-hidden="true"></i>
-            <span>escuela</span>
+        <a href="#" class="list-group-item list-group-item-action">
+            <span>Sub Dashboard</span>
         </a>
-        <ul>
-            <li class="active">
-                <a href="javascript:;">link</a>
-            </li>
-            <li>
-                <a href="javascript:;">sub menu dos</a>
-            </li>
-            <li>
-                <a href="javascript:;">link 2</a>
-            </li>
-            <li>
-                <a href="javascript:;">sub menu dos</a>
-            </li>
-        </ul>
-    </li>
-</ul>
+    </div>
+</div>

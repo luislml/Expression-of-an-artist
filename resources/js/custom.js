@@ -50,23 +50,5 @@ $(document).ready(function() {
     // dashboard
     $('#minified').on('click', function() {
         $('body').toggleClass('sidebar-minified');
-        $('.sidebar-minified .sub-menu').removeClass('on');
-        $('.sidebar-minified .sub-menu>ul').hide('fade');
     });
-    
-    $('.sub-menu>a').on('click', function() {
-
-        if ($(this).parent().hasClass('on')) {
-            $(this).parent().children('ul').hide('fade');
-            $(this).parent().removeClass('on');
-        } else {
-            $(this).parent().children('ul').show('fade');
-            $(this).parent().addClass('on');
-        }
-        
-    });
-
-    if (!$('body').hasClass('sidebar-minified')) {
-        
-    }
 });

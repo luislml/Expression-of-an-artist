@@ -58,30 +58,27 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(auth()->user()->hasRoles(['4']))
+                                <a class="dropdown-item" href="{{ route('admin.index') }}">
+                                    {{ __('Dashboard') }}
+                                </a>
+                            @endif
+                            @if(auth()->user()->hasRoles(['3']))
+                                <a class="dropdown-item" href="{{ route('art-school.index') }}">
+                                    {{ __('Dashboard') }}
+                                </a>
+                            @endif
+                            @if(auth()->user()->hasRoles(['2']))
+                                <a class="dropdown-item" href="{{ route('artist.index') }}">
+                                    {{ __('Artista') }}
+                                </a>
+                            @endif
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Salir') }}
                             </a>
-                            
-                            
-                            @if(auth()->user()->hasRoles(['4']))
-                                <a class="dropdown-item" href="{{ route('admin.index') }}">
-                                    {{ __('admin') }}
-                                </a>
-                            @endif
-                            @if(auth()->user()->hasRoles(['3']))
-                                <a class="dropdown-item" href="{{ route('art-school.index') }}">
-                                    {{ __('escuela') }}
-                                </a>
-                            @endif
-                            @if(auth()->user()->hasRoles(['2']))
-                                <a class="dropdown-item" href="{{ route('artist.index') }}">
-                                    {{ __('artista') }}
-                                </a>
-                            @endif
-
-                            
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

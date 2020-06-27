@@ -18,6 +18,9 @@
     <div id="app">
         <nav class="navbar py-0 navbar-expand-lg navbar-dash">
             <div class="container-fluid">
+                <a id="minified" href="javascript:;" class="bar mr-2">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Arts
                 </a>
@@ -34,16 +37,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto align-items-center">
                         {{-- Public links --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('/')}}">
                                 <i class="fa fa-home" aria-hidden="true"></i>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:;">
-                                <i class="fa fa-bell" aria-hidden="true"></i>
-                            </a>
-                        </li>
+                        </li> --}}
+                        {{-- Notifications Links --}}
+                        <notificayions-dash></notificayions-dash>
+                        
                         <!-- Authentication Links -->
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -67,52 +68,49 @@
             </div>
         </nav>
 
-        <aside class="sidebar"> 
-            <div class="side-scroll">
-
-                <div class="nav-user">
-                    <a href="javascript:;">
-                        <div class="cover" style="background-image: url({{ asset('images/blog-img1.jpg') }})"></div>
-                        <div class="image">
-                            <img class="rounded-circle" src="{{ asset('images/user.jpg') }}" alt="user">
-                        </div>
-                        <div class="info">
-                            {{ auth()->user()->name }}
-                            <small>
-                            @if(auth()->user()->hasRoles(['4']))
-                                Administrador
-                            @endif
-                            @if(auth()->user()->hasRoles(['3']))
-                                Escuela
-                            @endif
-                            @if(auth()->user()->hasRoles(['2']))
-                                Artista
-                            @endif
-                            </small>
-                        </div>
-                    </a>
+        <div class="dash-content">
+            <aside class="sidebar"> 
+                <div class="side-scroll">
+    
+                    <div class="nav-user">
+                        <a href="javascript:;">
+                            <div class="cover" style="background-image: url({{ asset('images/blog-img1.jpg') }})"></div>
+                            <div class="image">
+                                <img class="rounded-circle" src="{{ asset('images/user.jpg') }}" alt="user">
+                            </div>
+                            <div class="info">
+                                {{ auth()->user()->name }}
+                                <small>
+                                @if(auth()->user()->hasRoles(['4']))
+                                    Administrador
+                                @endif
+                                @if(auth()->user()->hasRoles(['3']))
+                                    Escuela
+                                @endif
+                                @if(auth()->user()->hasRoles(['2']))
+                                    Artista
+                                @endif
+                                </small>
+                            </div>
+                        </a>
+                    </div>
+                    @if(auth()->user()->hasRoles(['4']))
+                        @include('admin.menu')
+                    @endif
+                    @if(auth()->user()->hasRoles(['3']))
+                        @include('artschool.menu')
+                    @endif
+                    @if(auth()->user()->hasRoles(['2']))
+                        @include('artist.menu')
+                    @endif
+    
                 </div>
+            </aside>
 
-                @if(auth()->user()->hasRoles(['4']))
-                    @include('admin.menu')
-                @endif
-                @if(auth()->user()->hasRoles(['3']))
-                    @include('artschool.menu')
-                @endif
-                @if(auth()->user()->hasRoles(['2']))
-                    @include('artist.menu')
-                @endif
-
-            </div>
-
-            <a href="javascript:;" id="minified">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            </a>
-        </aside>
-
-        <main class="dash-content">
-            @yield('content')
-        </main>
+            <main>
+                @yield('content')
+            </main>
+        </div>
 
     </div>
 
