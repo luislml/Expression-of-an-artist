@@ -1,4 +1,11 @@
-<nav class="navbar py-0 navbar-expand-md main-nav">
+<div class="top-alert mb-0 alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Felicidades!</strong><br>
+    Su postulación fue aceptada, ya puede navegar por las diferentes opciones
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<nav class="navbar navbar-expand-md main-nav">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             Arts
@@ -14,24 +21,16 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto align-items-center">
                 {{-- Public links --}}
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('/') }}">
                         {{ __('Home') }}
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        {{ __('Shop') }}
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         {{ __('Contact') }}
-                        <i class="fa fa-comment" aria-hidden="true"></i>
                     </a>
                 </li>
                 <!-- Authentication Links -->
@@ -39,7 +38,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('loginregister') }}">
                             {{ __('Ingresar') }}
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </a>
                     </li>
                     {{-- <li class="nav-item">
@@ -53,11 +51,14 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <img src="{{ asset('images/avatars/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('account') }}">
+                                {{ __('Mi cuenta') }}
+                            </a>
+
                             @if(auth()->user()->hasRoles(['4']))
                                 <a class="dropdown-item" href="{{ route('admin.index') }}">
                                     {{ __('Dashboard') }}
@@ -87,17 +88,16 @@
 
                     @if (auth()->user()->hasRoles(['1']))
                     <li class="nav-item dropdown">
-                        <a id="options" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            opcion
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                        <a id="options" class="nav-link dropdown-toggle nav-link-solid" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Publica tus obras de arte
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="options">
                             <a class="dropdown-item" href="javascript:;" data-toggle="modal" data-target="#modalArtist">
-                                {{ __('Artista') }}
+                                {{ __('¿Eres un artista?') }}
                             </a>
                             <a class="dropdown-item" href="javascript:;" data-toggle="modal" data-target="#modalSchool">
-                                {{ __('Escuela') }}
+                                {{ __('¿Tienes una escuela de Arte?') }}
                             </a>
                         </div>
                     </li>

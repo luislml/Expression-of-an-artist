@@ -1,19 +1,16 @@
 $(window).scroll(function() {    // this will work when your window scrolled.
     var height = $(window).scrollTop();  //getting the scrolling height of window
     
-    if(height == 0) {
+    if(height  <= 400) {
       $(".main-nav").removeClass('sticky');
-      $('.main-nav').css({top: '0px', opacity: '1'});
+      $('.main-nav').animate({top: '0px', opacity: '1'}, 0);
+    } 
+    else if(height <= 500) {
+      $('.main-nav').animate({top: '-100px', opacity: '0'}, 0);
     }
     else {
-      if(height  <= 200) {
-        $(".main-nav").addClass('sticky');
-        $('.main-nav').animate({top: '-100px', opacity: '0'}, 0);
-      } 
-      else {
-        $(".main-nav").addClass('sticky');
-        $('.main-nav').animate({top: '0px', opacity: '1'}, 0);
-      }
+      $(".main-nav").addClass('sticky');
+      $('.main-nav').animate({top: '0px', opacity: '1'}, 0);
     }
   
     // animation
