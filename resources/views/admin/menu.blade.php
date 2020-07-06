@@ -3,7 +3,7 @@
         <i class="fa fa-th-large"></i>
         <span>Dashboard</span>
     </a>
-    <a href="{{ url('notificatios') }}" class="list-group-item list-group-item-action {{ (request()->is('notificatios')) ? 'active' : '' }}">
+    <a href="{{ url('notifications') }}" class="list-group-item list-group-item-action {{ (request()->is('notificatios')) ? 'active' : '' }}">
         <i class="fa fa-bell" aria-hidden="true"></i>
         <span>Notificaciones</span>
     </a>

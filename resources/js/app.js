@@ -25,6 +25,9 @@ window.Vue = require('vue');
 Vue.component('form-artist', require('./components/artists/FormArtist.vue').default);
 Vue.component('form-school', require('./components/school/FormSchool.vue').default);
 Vue.component('notificayions-dash', require('./components/notifications/NotificacionsDash.vue').default);
+Vue.component('notifications-view', require('./components/notifications/NotificacionsShow.vue').default);
+Vue.component('notification-show', require('./components/notifications/Notification.vue').default);
+Vue.component('notification-general', require('./components/notifications/NotificationsGeneral.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

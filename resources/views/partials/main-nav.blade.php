@@ -1,10 +1,3 @@
-<div class="top-alert mb-0 alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Felicidades!</strong><br>
-    Su postulación fue aceptada, ya puede navegar por las diferentes opciones
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
 <nav class="navbar navbar-expand-md main-nav">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
@@ -33,6 +26,7 @@
                         {{ __('Contact') }}
                     </a>
                 </li>
+                <notificayions-dash></notificayions-dash>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

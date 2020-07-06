@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AdminNotifications;
+use App\Events\AdminsNotify;
 use Auth;
 use App\Artist;
 use App\ArtistCv;
+use App\User;
 
 class ArtistController extends Controller
 {
@@ -59,6 +65,13 @@ class ArtistController extends Controller
         foreach ($cat as $idcat) {
             \DB::insert('insert into artist_art_categories (artist_id, category_id) values (?, ?)', [$artist->id, $idcat]);
         }
+
+        $userid = User::find($artist->user_id);    
+        $date = collect(['user_id' => $userid->id, 'name' => $userid->name, 'id_request' => $artist->id, 'type' => 'Artista']);
+        $admins = User::where('role_id', 4)->get();
+        
+        Notification::send($admins, new AdminNotifications($date));
+        event(new AdminsNotify('success'));
 
         return response()->json(['msg', 'ok'], 200);
     }
