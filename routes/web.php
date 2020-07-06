@@ -28,6 +28,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('account', function () {
+        return view('user.account');
+    });
+    Route::resource('user', 'User\UserController');
+});
+
 Route::apiresource('admin', 'AdminController');
 Route::apiresource('artist', 'ArtistController');
 Route::apiresource('art-school', 'ArtschoolController');
@@ -35,9 +42,11 @@ Route::apiresource('art-school', 'ArtschoolController');
 // routes categories
 Route::get('category', 'CategoryController@index');
 
+Route::get('notification/{id}', 'NotificationsController@generalnotifyread');
+Route::get('getnotify', 'NotificationsController@getnotify');
+
 // Routes Admin
 Route::group(['middleware' => ['auth', 'role:4']], function () {
-    Route::get('notificatios', function () {
-        return view('admin.notifications');
-    });
+    
+    Route::apiresource('notifications', 'NotificationsController');
 });

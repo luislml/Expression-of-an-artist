@@ -16,6 +16,9 @@
 </head>
 <body>
     <div id="app">
+        <v-app>
+            dfhgjdfh g
+        </v-app>
         <nav class="navbar py-0 navbar-expand-lg navbar-dash">
             <div class="container-fluid">
                 <a id="minified" href="javascript:;" class="bar mr-2">

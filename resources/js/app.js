@@ -37,6 +37,10 @@ Vue.component('login', require('./components/accounts/Login.vue').default);
 Vue.component('register', require('./components/accounts/Register.vue').default);
 Vue.component('update-account', require('./components/accounts/UpdateAccount.vue').default);
 Vue.component('delete-account', require('./components/accounts/DeleteAccount.vue').default);
+// notifications
+Vue.component('notifications-view', require('./components/notifications/NotificacionsShow.vue').default);
+Vue.component('notification-show', require('./components/notifications/Notification.vue').default);
+Vue.component('notification-general', require('./components/notifications/NotificationsGeneral.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -44,8 +48,12 @@ Vue.component('delete-account', require('./components/accounts/DeleteAccount.vue
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify(),
 });
 
 

@@ -16,6 +16,8 @@
 </head>
 <body>
     <div id="app">
+        {{-- notificacion --}}
+        <notification-general></notification-general>
         {{-- navigation --}}
         @include('partials.main-nav')
         {{-- end navigation --}}
@@ -37,6 +39,9 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <!-- More scripts -->
+    <script>
+
+    </script>
     @yield('scripts')
 </body>
 </html>
