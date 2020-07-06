@@ -3,8 +3,10 @@
 @section('content')
 
 <div class="cont-auth">
-    @include('auth.login') 
-    @include('auth.register')
+    <login></login>
+    {{-- @include('auth.login') --}}
+    <register></register>
+    {{-- @include('auth.register') --}}
     @include('auth.overlay')
 </div>
     

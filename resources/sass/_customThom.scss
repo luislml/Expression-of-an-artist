@@ -1,3 +1,123 @@
+/* auht */
+.vertical {
+    float: left;
+    width: 10%;
+    overflow: hidden;
+    .horizontal {
+        width: 100%;
+        height: 150px;
+        position: relative;
+        box-shadow: -1px 1px 0 1px #000000 inset, 0 0 50px rgba(0, 0, 0, 0.5) inset;
+        overflow: hidden;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover!important;
+    }
+}
+/* custom */
+.c-auth {
+    position: relative;
+    height: 100vh;
+    &::before {
+        content: '';
+        position: absolute;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 1;
+        box-shadow: 0 0 500px #000 inset,0 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .bg-efect {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+    .bg-container {
+        position: absolute;
+        z-index: 5;
+        // height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        .container {
+            max-width: 800px;
+        }
+    }
+}
+
+.container-auth {
+    position: relative;
+    .overlay-container {
+        transition: transform 0.6s ease-in-out;
+        z-index: 100;
+        min-height: 500px;
+        [class*='col-'] {
+            background: #2d353c;
+            background: rgba(45, 53, 60, 0.8);
+            min-height: 500px;
+        }
+        .panel {
+            padding: 15px;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+    }
+    .form-container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all 0.6s ease-in-out;
+        background: black;
+        padding: 15px;
+        &.form-register {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        &.form-login {
+            right: 0;
+            width: 50%;
+            z-index: 3;
+            opacity: 1;
+        }
+        form {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+    }
+    &.change {
+        .form-container {
+            &.form-register {
+                opacity: 1;
+                z-index: 3;
+                transform: translateX(0%);
+            }
+            &.form-login {
+                transform: translateX(-100%);
+                z-index: 2;
+                opacity: 0;
+            }
+        }
+    }
+}
+/* end auth */
+
+
 /* @font-face {
     font-family: "PT Sans Narrow";
     src: url(fonts/PTSansNarrow-Regular.ttf);
@@ -207,6 +327,9 @@ a {
                 }
             }
         }
+    }
+    &.disabled {
+        pointer-events: none;
     }
 }
 

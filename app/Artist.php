@@ -3,9 +3,30 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Artist extends Model
 {
+    use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
+    protected $dates = ['deleted_at'];
+    protected $softCascade = ['cvs'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
     // user
     public function user()
     {
@@ -34,7 +55,7 @@ class Artist extends Model
     /* n:M */
     // categories
     public function categories() {
-        return $this->belongsToMany('App\ArtCategory');
+        return $this->belongsToMany('App\ArtCategory', 'artist_art_categories', 'artist_id', 'category_id');
     }
     // events
     public function events() {

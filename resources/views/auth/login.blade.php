@@ -1,4 +1,4 @@
-<div class="form-container sign-up-container">
+<div class="form-container form-login d-flex align-items-center">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 

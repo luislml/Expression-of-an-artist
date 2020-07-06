@@ -20,6 +20,7 @@ class CreateArtistCvsTable extends Migration
             $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
             $table->enum('type_cv', ['url', 'pdf', 'text'])->nullable();
             $table->string('curriculum', 500);
+            $table->softDeletes();
 
             $table->timestamps();
         });

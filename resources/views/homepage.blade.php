@@ -8,7 +8,7 @@
 {{-- Main banner --}}
 
 {{-- data-interval="false" --}}
-<div id="slider_banner" class="carousel slide" data-ride="carousel">
+<div id="slider_banner" class="carousel slide slider-banner" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#slider_banner" data-slide-to="0" class="active"></li>
         <li data-target="#slider_banner" data-slide-to="1"></li>

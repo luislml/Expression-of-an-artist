@@ -48,7 +48,7 @@
                         <!-- Authentication Links -->
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img class="avatar rounded-circle mr-1" src="{{ asset('images/user.jpg') }}" alt="user">
+                                <img class="avatar rounded-circle mr-1" src="{{ asset('images/avatars/' . Auth::user()->avatar) }}" alt="user">
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -76,7 +76,7 @@
                         <a href="javascript:;">
                             <div class="cover" style="background-image: url({{ asset('images/blog-img1.jpg') }})"></div>
                             <div class="image">
-                                <img class="rounded-circle" src="{{ asset('images/user.jpg') }}" alt="user">
+                                <img class="rounded-circle" src="{{ asset('images/avatars/' . Auth::user()->avatar) }}" alt="user">
                             </div>
                             <div class="info">
                                 {{ auth()->user()->name }}

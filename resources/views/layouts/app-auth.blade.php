@@ -13,21 +13,37 @@
         
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/auth/auth.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/auth/jquery-ui.css') }}" rel='stylesheet'>
+        {{-- <link href="{{ asset('css/auth/auth.css') }}" rel="stylesheet"> --}}
+        {{-- <link href="{{ asset('css/auth/jquery-ui.css') }}" rel='stylesheet'> --}}
         
     </head>
-    <body class="c-auth">
+    <body>
 
-        <div class="container-auth" id="container">
-            @yield('content')
+        <div id="app" class="c-auth">
+            {{-- <div class="container-auth" id="container">
+                @yield('content')
+            </div> --}}
+            <div class="bg-container d-flex align-items-center justify-content-center">
+                <div class="container">
+                    <div id="auth" class="container-auth">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-efect">
+                @include('auth.bg')
+            </div>
         </div>
-            @include('auth.bg')
+
+        
         
         <!-- Scripts -->
-        <script src="{{ asset('js/auth/auth.js') }}" defer></script>
-        <script src="{{ asset('js/auth/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/auth/jquery-ui.min.js') }}"></script>
+        {{-- <script src="{{ asset('js/auth/auth.js') }}"></script> --}}
+        {{-- <script src="{{ asset('js/auth/jquery.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('js/auth/jquery-ui.min.js') }}"></script> --}}
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
         <script src="{{ asset('js/auth/TweenMax.min.js') }}"></script>
     </body>
 </html>

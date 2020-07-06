@@ -10,6 +10,13 @@ import Masonry from 'masonry-layout';
 
 window.Vue = require('vue');
 
+import VueFormulate from '@braid/vue-formulate'
+import { es } from '@braid/vue-formulate-i18n'
+Vue.use(VueFormulate, {
+  plugins: [es],
+  locale: 'es'
+})
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -25,6 +32,11 @@ window.Vue = require('vue');
 Vue.component('form-artist', require('./components/artists/FormArtist.vue').default);
 Vue.component('form-school', require('./components/school/FormSchool.vue').default);
 Vue.component('notificayions-dash', require('./components/notifications/NotificacionsDash.vue').default);
+// components account
+Vue.component('login', require('./components/accounts/Login.vue').default);
+Vue.component('register', require('./components/accounts/Register.vue').default);
+Vue.component('update-account', require('./components/accounts/UpdateAccount.vue').default);
+Vue.component('delete-account', require('./components/accounts/DeleteAccount.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

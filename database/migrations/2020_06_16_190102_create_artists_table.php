@@ -27,6 +27,7 @@ class CreateArtistsTable extends Migration
             $table->boolean('profession')->nullable();
             $table->integer('sale_num')->nullable();
             $table->boolean('state')->default(false);
+            $table->softDeletes();
 
             $table->timestamps();
         });
