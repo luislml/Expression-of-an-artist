@@ -22,12 +22,11 @@
             height="80"
             hide-on-scroll
             dark
-            src="https://source.unsplash.com/random/?paint"
             >
                 <template v-slot:img="{ props }">
                     <v-img
                         v-bind="props"
-                        gradient="to top right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)"
+                        gradient="to top right, rgba(38, 50, 56, .7), rgba(38, 50, 56, .5)"
                     ></v-img>
                 </template>
 
@@ -42,10 +41,7 @@
                 @if (Auth::check())
 
                 @if (auth()->user()->hasRoles(['1']))
-                    <v-btn class="mx-2" dark color="red darken-3" rounded>
-                        Artista
-                        <v-icon medium>mdi-palette</v-icon>
-                    </v-btn>
+                    <change-user></change-user>
                 @endif
 
                 <v-menu
@@ -208,7 +204,7 @@
                     v-model="tab"
                     centered
                     slider-color="red darken-3"
-                    background-color="black"
+                    background-color="blue-grey darken-4"
                     >
                         <v-tab>Home</v-tab>
                         <v-tab>About</v-tab>
@@ -221,13 +217,21 @@
             <v-main>
           
                 <!-- Provides the application the proper gutter -->
-                <v-container fluid>
+                <v-container fluid class="pa-0">
                     @yield('content')
                 </v-container>
             </v-main>
           
-            <v-footer>
-                hello
+            <v-footer
+                class="font-weight-medium"
+                color="blue-grey darken-4"
+            >
+                <v-col
+                    class="text-center white--text"
+                    cols="12"
+                >
+                    2020 — <strong>Arts</strong>
+                </v-col>
             </v-footer>
         </v-app>
 
@@ -256,9 +260,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <!-- More scripts -->
-    <script>
-
-    </script>
     @yield('scripts')
 </body>
 </html>

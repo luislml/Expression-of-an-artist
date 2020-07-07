@@ -33,6 +33,7 @@ Vue.component('form-artist', require('./components/artists/FormArtist.vue').defa
 Vue.component('form-school', require('./components/school/FormSchool.vue').default);
 Vue.component('notificayions-dash', require('./components/notifications/NotificacionsDash.vue').default);
 // components account
+Vue.component('change-user', require('./components/ChangeUser.vue').default);
 Vue.component('login', require('./components/accounts/Login.vue').default);
 Vue.component('register', require('./components/accounts/Register.vue').default);
 Vue.component('update-account', require('./components/accounts/UpdateAccount.vue').default);

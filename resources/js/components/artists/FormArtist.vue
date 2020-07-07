@@ -1,175 +1,166 @@
 <template>
     <div>
-        <div class="stepper">
-            <div class="step" :class="[(currentStep <= 3) ? 'active' : '']">
-                <a href="javascript:;" @click="goToStep(1)">
-                    <span class="stepper-circle">1</span>
-                    <span class="stepper-label">Datos generales</span>
-                </a>
-            </div>
-            <div class="step" :class="[(currentStep <= 3 && currentStep >= 2) ? 'active' : '']">
-                <a href="javascript:;" @click="goToStep(2)">
-                    <span class="stepper-circle">2</span>
-                    <span class="stepper-label">Curriculum</span>
-                </a>
-            </div>
-            <div class="step" :class="[(currentStep === 3) ? 'active' : '']">
-                <a href="javascript:;" @click="goToStep(3)">
-                    <span class="stepper-circle">3</span>
-                    <span class="stepper-label">Artista en:</span>
-                </a>
-            </div>
-        </div>
+        <v-stepper v-model="e6" vertical>
+            <v-stepper-step :complete="e6 > 1" :editable="e6 > 1" step="1">
+                Datos generales
+                <!-- <small>Summarize if needed</small> -->
+            </v-stepper-step>
 
-        <form novalidate="novalidate" @submit.prevent="createArtist">
-            <!-- Step Datas -->
-            <div id="step1" v-if="currentStep === 1">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input 
-                                class="form-control" 
-                                type="date" 
-                                autocomplete="off" 
-                                placeholder="Fecha de nacimientos"
-                                required
+            <v-stepper-content step="1">
+                <div class="my-3">
+                    <v-menu
+                        ref="nowMenu"
+                        v-model="nowMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        :return-value.sync="step1.birthday"
+                        transition="scale-transition"
+                        min-width="290px"
+                        offset-y
+                    >
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-text-field
                                 v-model="step1.birthday"
-                            >
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input 
-                                class="form-control"
-                                type="number"
-                                autocomplete="off"
-                                placeholder="Tel/Cel"
-                                required
-                                v-model="step1.tel_cel"
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <input
-                        class="form-control"
-                        type="text"
-                        autocomplete="off"
-                        placeholder="Ubicación"
-                        required
-                        v-model="step1.location"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <textarea
-                        class="form-control"
-                        required
-                        rows="3"
-                        cols="5"
-                        name="txtmessage"
-                        placeholder="Biografìa *"
-                        v-model="step1.biography"
-                    >
-                    </textarea>
-                </div>
-
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            id="profession"
-                            v-model="step1.profession"
+                                label="Fecha de nacimiento"
+                                dense
+                                readonly
+                                outlined
+                                v-bind="attrs"
+                                v-on="on"
+                            ></v-text-field>
+                        </template>
+                        <v-date-picker
+                            v-model="step1.birthday"
+                            no-title
+                            scrollable
                         >
-                        <label class="custom-control-label" for="profession">Tiene alguna Profesión</label>
+                            <v-spacer></v-spacer>
+                            <v-btn
+                                text
+                                color="primary"
+                                @click="nowMenu = false"
+                            >
+                                Cancel
+                            </v-btn>
+                            <v-btn
+                                text
+                                color="primary"
+                                @click="$refs.nowMenu.save(step1.birthday)"
+                            >
+                                OK
+                            </v-btn>
+                        </v-date-picker>
+                    </v-menu>
+
+                    <v-text-field
+                        v-model="step1.tel_cel"
+                        label="Tel/cel"
+                        dense
+                        outlined
+                    ></v-text-field>
+
+                    <v-text-field
+                        v-model="step1.location"
+                        label="Ubicación"
+                        dense
+                        outlined
+                    ></v-text-field>
+
+                    <v-textarea
+                        v-model="step1.biography"
+                        outlined
+                        dense
+                        rows="3"
+                        label="Biografía"
+                    ></v-textarea>
+                    
+                </div>
+
+                <v-btn color="primary" @click="e6 = 2">Siguiente</v-btn>
+            </v-stepper-content>
+
+            <v-stepper-step :complete="e6 > 2" :editable="e6 > 2" step="2">
+                Curriculum
+            </v-stepper-step>
+
+            <v-stepper-content step="2">
+                <div class="my-3">
+                    <v-radio-group row v-model="step2.type_cv">
+                        <v-radio
+                            label="Url"
+                            value="url"
+                            color="grey"
+                        ></v-radio>
+                        <v-radio
+                            label="Pdf"
+                            value="pdf"
+                            color="grey"
+                        ></v-radio>
+                        <v-radio
+                            label="Text"
+                            value="text"
+                            color="grey"
+                        ></v-radio>
+                    </v-radio-group>
+
+                    <!-- url -->
+                    <div v-if="step2.type_cv === 'url'">
+                        <v-text-field
+                            v-model="step2.curriculum.url"
+                            label="Url del sitio"
+                            dense
+                            outlined
+                        ></v-text-field>
+                    </div>
+                    <!-- pdf -->
+                    <div class="form-group" v-if="step2.type_cv === 'pdf'">
+                        <v-file-input 
+                            label="Archivo Pdf"
+                            outlined
+                            dense
+                            accept="application/pdf"
+                            @change="processFile"
+                        >
+                        </v-file-input>
+                    </div>
+                    <!-- text -->
+                    <div class="form-group" v-if="step2.type_cv === 'text'">
+                        <v-textarea
+                            v-model="step2.curriculum.text"
+                            outlined
+                            dense
+                            label="Currilulum"
+                        ></v-textarea>
                     </div>
                 </div>
 
-                <div class="text-right">
-                    <button type="button" name="next" class="btn btn-primary" @click="goToStep(2)">
-                        Siguiente 
-                    </button>
-                </div>
-            </div>
+                <v-btn color="primary" @click="e6 = 3">Siguiente</v-btn>
+            </v-stepper-content>
 
-            <!-- Step curriculum -->
-            <div id="step2" v-if="currentStep === 2">
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="url" class="custom-control-input" value="url" v-model="step2.type_cv">
-                    <label class="custom-control-label" for="url">Url</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="pdf" class="custom-control-input" value="pdf" v-model="step2.type_cv">
-                    <label class="custom-control-label" for="pdf">Pdf</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="text" class="custom-control-input" value="text" v-model="step2.type_cv">
-                    <label class="custom-control-label" for="text">Text</label>
-                </div>
+            <v-stepper-step :complete="e6 > 3" :editable="e6 > 3" step="3">
+                Habilidades
+            </v-stepper-step>
 
-                <!-- url -->
-                <div class="form-group" v-if="step2.type_cv === 'url'">
-                    <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Url"
-                        v-model="step2.curriculum.url"
-                    >
-                </div>
-                <!-- pdf -->
-                <div class="form-group" v-if="step2.type_cv === 'pdf'">
-                    <input
-                        class="form-control"
-                        type="file"
-                        placeholder="archivo Pdf"
-                        accept="application/pdf"
-                        @change="processFile($event)"
-                    >
-                </div>
-                <!-- text -->
-                <div class="form-group" v-if="step2.type_cv === 'text'">
-                    <textarea
-                        class="form-control"
-                        required
-                        rows="3"
-                        cols="5"
-                        name="txtmessage"
-                        placeholder="Currilulum"
-                        v-model="step2.curriculum.text"
-                    >
-                    </textarea>
-                </div>
-
-                <div class="text-right">
-                    <button type="button" name="next" class="btn btn-primary" @click="goToStep(3)">
-                        Siguiente 
-                    </button>
-                </div>
-            </div>
-
-            <!-- Step category -->
-            <div id="step3" v-if="currentStep === 3">
-                <div class="custom-control custom-checkbox" v-for="(item) in optionsCat" :key="item.id">
-                    <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        :id="'cat'+item.id"
-                        :value="item.id"
+            <v-stepper-content step="3">
+                <div class="my-3">
+                    <v-select
+                        :items="optionsCat"
+                        item-text="name"
+                        item-value="id"
+                        label="Artista en:"
+                        dense
+                        outlined
+                        multiple
+                        chips
                         v-model="step3.listCat"
-                    >
-                    <label class="custom-control-label" :for="'cat'+item.id">{{ item.name }}</label>
+                    ></v-select>
+                    <!-- v-model="step3.listCat" -->
                 </div>
 
-                <div class="text-right">
-                    <button type="submit" name="submit" class="btn btn-primary">
-                        Postular 
-                    </button>
-                </div>
-            </div>
+                <v-btn color="primary" @click="createArtist">Postular</v-btn>
+            </v-stepper-content>
+        </v-stepper>
 
-        </form>
     </div>
 </template>
 <script>
@@ -179,7 +170,9 @@ export default {
     name: 'FormArtist',
     data() {
         return {
-            currentStep: 1,
+            e6: 1,
+            nowMenu: false,
+
             optionsCat: [],
             step1: {
                 birthday: '',
@@ -214,11 +207,9 @@ export default {
                 console.log(error);
             })
         },
-        goToStep(step) {
-            this.currentStep = step;
-        },
         processFile(event) {
-            this.step2.curriculum.pdf = event.target.files[0];
+            // this.step2.curriculum.pdf = event.target.files[0];
+            this.step2.curriculum.pdf = event;
         },
         createArtist() {
             const formData = new FormData();
@@ -248,7 +239,7 @@ export default {
             axios.post('/artist', formData)
             .then((response) => {
                 // console.log(response);
-                this.currentStep = 1;
+                this.e6 = 1;
                 this.step1 = {
                     birthday: '',
                     tel_cel: '',
@@ -267,7 +258,8 @@ export default {
                 this.step3 = {
                     listCat: []
                 };
-                $('#modalArtist').modal('hide');
+                
+                this.$emit('close-dialog', false);
                 toastr.success('solicitud fue enviada correctamente');
             })
             .catch((error) => {
@@ -277,56 +269,3 @@ export default {
     }
 }
 </script>
-<style lang="scss">
-    .stepper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 15px;
-        .step {
-            position: relative;
-            a {
-                padding: 10px;
-                font-size: 16px;
-                display: inline-block;
-                border-radius: 40px;
-                .stepper-circle {
-                    background: #a81c1c;
-                    display: inline-block;
-                    text-align: center;
-                    vertical-align: middle;
-                    padding: 6.5px;
-                    width: 35px;
-                    font-size: 18px;
-                    font-weight: bold;
-                    border-radius: 50%;
-                }
-            }
-            &.active {
-                a:hover {
-                    box-shadow: 0 0 8px 1px #545a5f;
-                }
-            }
-            &:not(:last-child) {
-                margin-right: 25px;
-                &::after {
-                    content: '';
-                    position: absolute;
-                    width: 25px;
-                    height: 2px;
-                    background: #a81c1c;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    right: -25px;
-                }
-            }
-            &:not(.active) {
-                a {
-                    cursor: default;
-                    pointer-events: none;
-                    opacity: 0.4;
-                }
-            }
-        }
-    }
-</style>
