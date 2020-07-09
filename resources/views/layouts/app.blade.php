@@ -16,6 +16,7 @@
 </head>
 <body>
     <div id="app">
+        
         <v-app>
             <v-app-bar 
             app
@@ -23,6 +24,7 @@
             hide-on-scroll
             dark
             >
+            <notification-general></notification-general>
                 <template v-slot:img="{ props }">
                     <v-img
                         v-bind="props"

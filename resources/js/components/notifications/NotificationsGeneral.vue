@@ -1,19 +1,27 @@
 <template>
     <div>
-        <div v-if="success" class="top-alert mb-0 alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{title}}</strong><br>
-                {{message}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" v-on:click="readnotifications()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div v-if="error" class="top-alert mb-0 alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{title}}</strong><br>
-                {{message}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" v-on:click="readnotifications()" >
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <v-alert 
+            v-if="success"   
+            type="success"    
+        >
+            <strong>{{title}}</strong> {{message}}
+            <v-btn 
+            color="success" 
+            dark
+            fab
+            v-on:click="readnotifications()">x</v-btn>
+        </v-alert>        
+        <v-alert 
+            v-if="error"   
+            type="error"    
+        >
+            <strong>{{title}}</strong> {{message}}
+            <v-btn 
+            color="error" 
+            dark
+            fab
+            v-on:click="readnotifications()">x</v-btn>
+        </v-alert>  
         
     </div>
     
@@ -66,6 +74,7 @@ export default ({
             this.msjid = 'readnotifysuccess';
             var url = 'notification/'+this.msjid;
             axios.get(url).then(response => {
+                this.success = false;
                 console.log(response.data);
             })
         },             
