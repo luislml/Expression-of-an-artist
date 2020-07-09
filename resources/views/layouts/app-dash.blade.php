@@ -16,111 +16,138 @@
 </head>
 <body>
     <div id="app">
-        <v-app>
-            dfhgjdfh g
-        </v-app>
-        <nav class="navbar py-0 navbar-expand-lg navbar-dash">
-            <div class="container-fluid">
-                <a id="minified" href="javascript:;" class="bar mr-2">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Arts
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        
+        <v-app id="inspire">
+            <v-navigation-drawer
+                v-model="drawer"
+                app
+                color="grey darken-3"
+                clipped
+                >
+                {{-- esto mover --}}
+                
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        
-                    </ul>
+                @if(auth()->user()->hasRoles(['4']))
+                @include('admin.menu')
+                @endif
+                @if(auth()->user()->hasRoles(['3']))
+                    @include('artschool.menu')
+                @endif
+                @if(auth()->user()->hasRoles(['2']))
+                    @include('artist.menu')
+                @endif
+                {{-- hasta aqui --}}
+            </v-navigation-drawer>
+        
+            <v-app-bar
+                app
+                color="grey darken-4"
+                clipped-left
+                dark
+                >
+                <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+                <v-toolbar-title>
+                    <a class="navbar-brand" >
+                        Arts
+                    </a>
+                </v-toolbar-title>
+                <v-spacer></v-spacer>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto align-items-center">
-                        {{-- Public links --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/')}}">
-                                <i class="fa fa-home" aria-hidden="true"></i>
-                            </a>
-                        </li> --}}
-                        {{-- Notifications Links --}}
-                        <notificayions-dash></notificayions-dash>
-                        
-                        <!-- Authentication Links -->
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img class="avatar rounded-circle mr-1" src="{{ asset('images/avatars/' . Auth::user()->avatar) }}" alt="user">
-                                {{ Auth::user()->name }}
-                            </a>
+                {{-- notificaciones --}}
+                    <notificayions-dash></notificayions-dash>
+                {{-- end notificaciones --}}
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Salir') }}
-                                </a>
+                <v-menu
+                    :close-on-content-click="false"
+                    :offset-x="false"
+                    :offset-y="true"
+                    >
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on" class="ml-2 mr-0">
+                            <v-avatar>
+                                <img
+                                src="{{ asset('images/avatars/' . Auth::user()->avatar) }}"
+                                alt="John"
+                                >
+                            </v-avatar>
+                        </v-btn>
+                    </template>
+
+                    <v-card>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-avatar color="black">
+                                    <img src="{{ asset('images/avatars/' . Auth::user()->avatar) }}" alt="John">
+                                </v-list-item-avatar>
+
+                                <v-list-item-content>
+                                    <v-list-item-title>{{ Auth::user()->name }}</v-list-item-title>
+                                    <v-list-item-subtitle>Founder of Vuetify.js</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list>
+
+                        <v-divider class="mt-0"></v-divider>
+
+                        <v-list dense>
+                            <v-list-item-group color="black">
+                                <v-list-item href="{{ url('account') }}">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-account</v-icon>
+                                    </v-list-item-icon>
+
+                                    <v-list-item-content>
+                                        <v-list-item-title>Mi cuenta</v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
+
+                                <v-list-item href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"
+                                >
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-logout</v-icon>
+                                    </v-list-item-icon>
+
+                                    <v-list-item-content>
+                                        <v-list-item-title>Salir</v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="dash-content">
-            <aside class="sidebar"> 
-                <div class="side-scroll">
-    
-                    <div class="nav-user">
-                        <a href="javascript:;">
-                            <div class="cover" style="background-image: url({{ asset('images/blog-img1.jpg') }})"></div>
-                            <div class="image">
-                                <img class="rounded-circle" src="{{ asset('images/avatars/' . Auth::user()->avatar) }}" alt="user">
-                            </div>
-                            <div class="info">
-                                {{ auth()->user()->name }}
-                                <small>
-                                @if(auth()->user()->hasRoles(['4']))
-                                    Administrador
-                                @endif
-                                @if(auth()->user()->hasRoles(['3']))
-                                    Escuela
-                                @endif
-                                @if(auth()->user()->hasRoles(['2']))
-                                    Artista
-                                @endif
-                                </small>
-                            </div>
-                        </a>
-                    </div>
-                    @if(auth()->user()->hasRoles(['4']))
-                        @include('admin.menu')
-                    @endif
-                    @if(auth()->user()->hasRoles(['3']))
-                        @include('artschool.menu')
-                    @endif
-                    @if(auth()->user()->hasRoles(['2']))
-                        @include('artist.menu')
-                    @endif
-    
-                </div>
-            </aside>
-
-            <main>
-                @yield('content')
-            </main>
-        </div>
-
+                            </v-list-item-group>
+                        </v-list>
+                    </v-card>
+                </v-menu>
+            </v-app-bar>
+        
+            <v-main>
+                <v-container>
+                    @yield('content')
+                </v-container>
+            </v-main>
+            <v-footer
+                color="grey darken-4"
+                app
+                >
+                <span class="white--text">&copy; Arañas Dev </span>
+            </v-footer>
+        </v-app>
+            
+          
     </div>
-
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
     <!-- More scripts -->
+    
+    
+   
+        
+  
     @yield('scripts')
+    
 </body>
 </html>

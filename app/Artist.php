@@ -24,8 +24,9 @@ class Artist extends Model
      *
      * @var array
      */
+    //revisar created_at 'created_at',
     protected $hidden = [
-        'created_at', 'updated_at',
+         'updated_at',
     ];
     // user
     public function user()
