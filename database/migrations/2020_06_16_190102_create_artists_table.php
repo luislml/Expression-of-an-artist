@@ -24,7 +24,7 @@ class CreateArtistsTable extends Migration
             $table->date('birthday');
             $table->string('tel_cel')->unique();
             $table->string('location', 100)->nullable();
-            $table->boolean('profession')->nullable();
+            // $table->boolean('profession')->nullable();
             $table->integer('sale_num')->nullable();
             $table->boolean('state')->default(false);
             $table->softDeletes();

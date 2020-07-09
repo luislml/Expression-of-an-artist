@@ -44,7 +44,7 @@ class ArtistController extends Controller
         $artist->birthday = $request['birthday'];
         $artist->tel_cel = $request['tel_cel'];
         $artist->location = $request['location'];
-        $artist->profession = $request['profession'];
+        // $artist->profession = $request['profession'];
         $artist->save();
 
         $artCV = new ArtistCv;

@@ -33,6 +33,7 @@
         "moment": "^2.27.0",
         "pusher-js": "^4.4.0",
         "toastr": "^2.1.4",
+        "vuelidate": "^0.7.5",
         "vuetify": "^2.3.3"
     }
 }

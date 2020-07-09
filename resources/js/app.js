@@ -51,6 +51,8 @@ Vue.component('notification-general', require('./components/notifications/Notifi
 
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
 
 const app = new Vue({
     el: '#app',
