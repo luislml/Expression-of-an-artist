@@ -30,7 +30,7 @@
         "font-awesome": "^4.7.0",
         "laravel-echo": "^1.5.3",
         "masonry-layout": "^4.2.2",
-        "moment": "^2.27.0",
+        "moment": "^2.29.4",
         "pusher-js": "^4.4.0",
         "toastr": "^2.1.4",
         "vuelidate": "^0.7.5",
